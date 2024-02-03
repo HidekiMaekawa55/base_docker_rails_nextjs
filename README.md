@@ -102,3 +102,17 @@ http://localhost:〇〇〇〇/
 ```
 
 
+## その他
+##### git addしたらエラーが発生した場合
+```
+maekawahideki@maekawahidekinoMacBook-Pro blog_app % git add -A
+error: 'backend/' does not have a commit checked out
+fatal: adding files failed
+```
+↓ backend側でgit initされているため発生
+.gitディレクトリを削除する
+```
+$ cd backend
+$ rm -r .git
+```
+
