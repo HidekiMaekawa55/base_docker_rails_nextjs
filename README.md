@@ -65,17 +65,23 @@ http://localhost:〇〇〇〇/
 gem "rack-cors"のコメントアウトを外してbundle install
 # docker compose exec api bundle install
 ```
-##### 11. config/initializers/cors.rbを書き換える(〇〇〇〇はfronのport番号)
+##### 11-a. config/initializers/cors.rbを書き換える
 ```
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "localhost:〇〇〇〇"
+    origins "*"
 
     resource "*",
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]
   end
 end
+```
+
+##### 11-b. backend/config/environments/development.rbに追加
+```
+  # NOTE: [ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: api:3000
+  config.hosts << "api"
 ```
 -----------------
 fornの設定
