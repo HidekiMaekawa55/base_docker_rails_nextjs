@@ -34,6 +34,9 @@ services:
     # command: sh -c "npm run dev"
     tty: true
     stdin_open: true
+    # NOTE: api:3000でapiサーバーにアクセスを可能にするための設定
+    depends_on:
+      - api
   
 volumes:
   my-mate-db-volume:

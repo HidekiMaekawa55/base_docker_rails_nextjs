@@ -1,10 +1,11 @@
-FROM ruby:3.2
+FROM ruby:3.2.2
 
 WORKDIR /api
 
 COPY Gemfile /api/Gemfile
 COPY Gemfile.lock /api/Gemfile.lock
 
+RUN gem install bundler -v 2.4.10
 RUN bundle install
 
 COPY . /api
